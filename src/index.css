@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply text-base antialiased;
+  }
+
+  /* Improve touch targets */
+  button, 
+  a {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20;
+  }
+
+  .heading-1 {
+    @apply text-4xl sm:text-5xl md:text-7xl font-bold;
+  }
+
+  .heading-2 {
+    @apply text-3xl sm:text-4xl font-bold;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in;
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.gray.100');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.teal.500');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.teal.600');
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Mobile-first media queries */
+@media (max-width: 480px) {
+  .container {
+    @apply px-4;
+  }
+  
+  body {
+    @apply text-sm;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    @apply px-6;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    @apply px-8;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    @apply px-12;
+  }
+}
